@@ -7,20 +7,20 @@
             "command": "g++",
             "args": [
                 "-g",
-                "-D VK_DEBUG",
-                "-Wall",
-                "-Wextra",
-                "-Wdisabled-optimization",
                 "${workspaceFolder}/src/main.cpp",
                 "-o",
-				"${workspaceFolder}/bin/HelloVulkan(debug).x86_64",
-				"-lSDL2",
+                "'${workspaceFolder}/bin/SnakeRedux(debug).x86_64'",
+                "-lSDL2"
+
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "presentation": {
                 "reveal": "silent"
             },
             "problemMatcher": "$gcc"
-        },
+        }
     ]
 }

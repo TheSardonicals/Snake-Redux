@@ -24,13 +24,12 @@ int main(int argc, char** argv){
 
     SDL_Init(SDL_INIT_VIDEO);
 
-     int WIDTH, HEIGHT;
+     int WIDTH = 640, HEIGHT = 480;
     //SDL
     SDL_Window * window;      // window handle
     SDL_Renderer * renderer;  // renderer handle
     SDL_Event event;         // event handle
 
-    WIDTH, HEIGHT = 640, 480;
     window = SDL_CreateWindow("Snake Redux", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 WIDTH, HEIGHT, 0);
     
