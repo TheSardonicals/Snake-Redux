@@ -24,7 +24,7 @@ int main(int argc, char** argv){
     if (!SnakeGame->Start(argc, argv)){
         return -1;
     }   
-    else{
+    else {
         SDL_SetEventFilter(Filter, (void*)SnakeGame);
         SnakeGame->Loop();
         SnakeGame->End();

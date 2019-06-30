@@ -32,13 +32,14 @@ int Game::Start(int argc, char** argv) {
     running = true;
 
     //initialize various objects
+    clock = new Clock();
 
 }
 
 
 void Game::Logic() {
     //timer update
-
+    clock->Tick();
     //event loop
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
@@ -46,7 +47,7 @@ void Game::Logic() {
             break;
         }
     }
-
+    cout << clock->dt << '\n' << endl;
     //game logic and state
 
 }
@@ -64,7 +65,7 @@ void Game::Loop() {
     while (running){
         Logic();
         Render();
-        SDL_Delay(10);
+        // SDL_Delay(10);
     }
 }
 

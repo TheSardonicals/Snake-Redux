@@ -1,6 +1,10 @@
+#pragma once
 //SDL2
 #include <SDL2/SDL.h>
+//Game Includes
+#include "clock.h"
 //Standard
+#include <iostream>
 using namespace std;
 
 
@@ -14,6 +18,8 @@ class Game {
         int WIDTH , HEIGHT;
         //general variables
         bool finished = false;
+        //general objects
+        Clock * clock;
         //private functions
         void Logic();
         void Render();
