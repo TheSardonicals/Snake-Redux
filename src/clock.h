@@ -12,7 +12,5 @@ class Clock{
 
         Clock();
         void Tick();
-
-
 };
 

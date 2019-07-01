@@ -11,6 +11,7 @@
                 "-Wextra",
                 "-Wdisabled-optimization",
                 "${workspaceFolder}/src/clock.cpp",
+                "${workspaceFolder}/src/texture.cpp",
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/game.cpp",
                 "-o",

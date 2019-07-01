@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 //Game Includes
 #include "clock.h"
+#include "texture.h"
 //Standard
 #include <iostream>
 using namespace std;
@@ -16,10 +17,25 @@ class Game {
 
         //resolution
         int WIDTH , HEIGHT;
-        //general variables
+
+        //game variables
         bool finished = false;
-        //general objects
-        Clock * clock;
+
+        //game objects
+        Clock * clock;      
+        TextureCache * cache;
+
+        //enums and structs
+        enum GameState {
+            MAIN_MENU = 0,
+            CLASSIC_MODE = 1,
+            REDUX_MODE = 2,
+        } game_mode;
+        enum Difficulty {
+            NORMAL = 0,
+            HARD = 1,
+        } difficulty;
+
         //private functions
         void Logic();
         void Render();

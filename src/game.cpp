@@ -3,10 +3,10 @@
 int Game::Start(int argc, char** argv) {
     SDL_Init(SDL_INIT_VIDEO); //Initializes SDL2 with appropriate subsystems.
 
-    //process command arguments
+    //process command-line arguments.
 
     //set the width and height to user set resolution, or set it to constants
-    WIDTH = 640, HEIGHT = 480;
+    WIDTH = 800, HEIGHT = 600;
 
     //create window
     window = SDL_CreateWindow("Snake Redux", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -33,6 +33,7 @@ int Game::Start(int argc, char** argv) {
 
     //initialize various objects
     clock = new Clock();
+    cache = new TextureCache(renderer);
 
 }
 
@@ -47,7 +48,7 @@ void Game::Logic() {
             break;
         }
     }
-    cout << clock->dt << '\n' << endl;
+    cout << clock->dt_sec << '\n' << endl;
     //game logic and state
 
 }

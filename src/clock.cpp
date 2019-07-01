@@ -1,6 +1,5 @@
 #include "clock.h"
 
-
 Clock::Clock() {
     last_time = 0.0;
     current_time = SDL_GetPerformanceCounter();
