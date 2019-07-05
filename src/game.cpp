@@ -32,8 +32,11 @@ int Game::Start(int argc, char** argv) {
     running = true;
 
     //initialize various objects
+    framebuffer = new Framebuffers(window, renderer);
+    framebuffer->CreateFramebuffer(WIDTH, HEIGHT);
     clock = new Clock();
     cache = new TextureCache(renderer);
+
 
 }
 
@@ -57,8 +60,14 @@ void Game::Render() {
     //state based rendering.
     SDL_RenderClear(renderer);
 
+    framebuffer->SetFramebuffer(0);
+    SDL_SetRenderDrawColor(renderer, 242, 242, 242, 255);
+    SDL_RenderClear(renderer);
+
     //draw here...
 
+    framebuffer->UnsetFramebuffer();
+    framebuffer->RenderBuffer(0);
     SDL_RenderPresent(renderer);
 }
 

@@ -24,7 +24,8 @@ class Game {
         //game objects
         Clock * clock;      
         TextureCache * cache;
-
+        Framebuffers * framebuffer;
+        
         //enums and structs
         enum GameState {
             MAIN_MENU = 0,

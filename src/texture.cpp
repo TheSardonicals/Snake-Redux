@@ -1,5 +1,6 @@
 #include "texture.h"
 
+// Texture Cache
 
 TextureCache::TextureCache(SDL_Renderer * referenced_renderer) {
     renderer = referenced_renderer;
@@ -23,4 +24,49 @@ SDL_Texture * TextureCache::LoadTexture(string filepath) {
         SDL_SetTextureBlendMode(textures[filepath], SDL_BLENDMODE_MOD);   // color modulation (exaggerated base color).
     }
     return textures[filepath];
+}
+
+// Framebuffer
+
+Framebuffers::Framebuffers(SDL_Window * window, SDL_Renderer * target) {
+    renderer = target;
+    pixel_format = SDL_GetWindowPixelFormat(window);
+}
+
+Framebuffers::~Framebuffers() {
+    for (auto  & buffer: buffers){
+        SDL_DestroyTexture(buffer);
+    }
+}
+
+void Framebuffers::CreateFramebuffer(int width, int height) {
+    buffers.push_back(SDL_CreateTexture(renderer, pixel_format, SDL_TEXTUREACCESS_TARGET, width, height));
+}
+
+int Framebuffers::SetFramebuffer(int i) {
+    if (0 <= i < buffers.size()){
+        SDL_SetRenderTarget(renderer, buffers[i]);
+        return 1;
+    }
+    return 0;
+}
+
+void Framebuffers::UnsetFramebuffer() {
+    SDL_SetRenderTarget(renderer, NULL);
+}
+
+int Framebuffers::RenderBuffer(int i, int x, int y, int w, int h) {
+    destination.x = x;
+    destination.y = y;
+    destination.w = w;
+    destination.h = h;
+    if (0 <= i < buffers.size()){
+        if (x==y==w==h==0){
+            SDL_RenderCopy(renderer,buffers[i], NULL, NULL);
+        } else{
+            SDL_RenderCopy(renderer,buffers[i], NULL, &destination);
+        }
+        return 1;
+    }
+    return 0;
 }

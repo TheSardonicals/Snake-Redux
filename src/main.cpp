@@ -3,7 +3,7 @@
 //Event Filter (for mobile devices)
 int Filter(void* userdata, SDL_Event* event){
     Game * game = static_cast<Game*>(userdata);
-    switch(event->type) {
+    switch (event->type) {
         case SDL_APP_WILLENTERBACKGROUND:
             game->running = false;
             return 0;
@@ -28,6 +28,5 @@ int main(int argc, char** argv){
         SDL_SetEventFilter(Filter, (void*)SnakeGame);
         SnakeGame->Loop();
     }
-
     return 0;   
 }
