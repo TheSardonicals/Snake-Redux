@@ -29,5 +29,5 @@ class Framebuffers {
         void CreateFramebuffer(int width, int height);
         int SetFramebuffer(int i);
         void UnsetFramebuffer();
-        int RenderBuffer(int i, int x = 0, int y = 0, int w = 0, int h = 0);
+        int RenderBuffer(int i, int x, int y, int w, int h);
 };

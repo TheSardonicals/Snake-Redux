@@ -44,7 +44,7 @@ void Framebuffers::CreateFramebuffer(int width, int height) {
 }
 
 int Framebuffers::SetFramebuffer(int i) {
-    if (0 <= i < buffers.size()){
+    if ((0 <= i) && (i < buffers.size())){
         SDL_SetRenderTarget(renderer, buffers[i]);
         return 1;
     }
@@ -60,12 +60,8 @@ int Framebuffers::RenderBuffer(int i, int x, int y, int w, int h) {
     destination.y = y;
     destination.w = w;
     destination.h = h;
-    if (0 <= i < buffers.size()){
-        if (x==y==w==h==0){
-            SDL_RenderCopy(renderer,buffers[i], NULL, NULL);
-        } else{
-            SDL_RenderCopy(renderer,buffers[i], NULL, &destination);
-        }
+    if ((0 <= i) && (i < buffers.size())){
+         SDL_RenderCopy(renderer, buffers[i], NULL, &destination);
         return 1;
     }
     return 0;

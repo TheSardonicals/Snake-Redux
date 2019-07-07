@@ -4,6 +4,7 @@
 //Game Includes
 #include "clock.h"
 #include "texture.h"
+#include "snake.h"
 //Standard
 #include <iostream>
 using namespace std;
@@ -16,15 +17,18 @@ class Game {
         SDL_Event event;          // event handle
 
         //resolution
-        int WIDTH , HEIGHT;
+        int WIDTH , HEIGHT, SCREEN_W, SCREEN_H;
 
         //game variables
         bool finished = false;
+        bool fullscreen = false;
+        const Uint8 * keystate;
 
         //game objects
         Clock * clock;      
         TextureCache * cache;
         Framebuffers * framebuffer;
+        Snake * snake;
         
         //enums and structs
         enum GameState {
@@ -41,6 +45,7 @@ class Game {
         void Logic();
         void Render();
         ~Game();
+        
     public:
         bool running;
         Game();
@@ -48,4 +53,6 @@ class Game {
         void Loop();
         void End();
 
+        void SetFullscreen();
+        void SetResolution();
 };
