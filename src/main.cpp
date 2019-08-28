@@ -18,15 +18,14 @@ int Filter(void* userdata, SDL_Event* event){
 }
 
 int main(int argc, char** argv){
-    Game * SnakeGame;
-    SnakeGame = new Game();
+    Game SnakeGame;
 
-    if (!SnakeGame->Start(argc, argv)){
+    if (!SnakeGame.Start(argc, argv)){
         return -1;
     }   
     else {
-        SDL_SetEventFilter(Filter, (void*)SnakeGame);
-        SnakeGame->Loop();
+        SDL_SetEventFilter(Filter, (void*)&SnakeGame);
+        SnakeGame.Loop();
     }
     return 0;   
 }

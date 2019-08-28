@@ -9,10 +9,10 @@ using namespace std;
 class TextureCache {
     private:
         map<string, SDL_Texture *> textures;
-        ~TextureCache();
     public:
         SDL_Renderer * renderer;
         TextureCache(SDL_Renderer * referenced_renderer);
+        ~TextureCache();
         SDL_Texture * LoadTexture(string filepath);
 };
 
@@ -23,9 +23,10 @@ class Framebuffers {
         uint32_t pixel_format;
         vector<SDL_Texture *>buffers;
         SDL_Renderer * renderer;
-        ~Framebuffers();
+       
     public:
         Framebuffers(SDL_Window * window, SDL_Renderer * target);
+        ~Framebuffers();
         void CreateFramebuffer(int width, int height);
         int SetFramebuffer(int i);
         void UnsetFramebuffer();

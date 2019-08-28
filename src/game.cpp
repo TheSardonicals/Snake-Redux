@@ -114,11 +114,15 @@ void Game::Loop() {
     while (running){
         Logic();
         Render();
-        SDL_Delay(10);
+
     }
 }
 
 void Game::End() {
+    delete snake;
+    delete cache;
+    delete clock;
+    delete framebuffer;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

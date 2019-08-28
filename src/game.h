@@ -44,11 +44,13 @@ class Game {
         //private functions
         void Logic();
         void Render();
-        ~Game();
+        
         
     public:
         bool running;
         Game();
+        ~Game();
+        
         int Start(int argc, char** argv);
         void Loop();
         void End();

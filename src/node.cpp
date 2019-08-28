@@ -2,10 +2,6 @@
 
 
 Node::~Node() {
-    SDL_free(&area);
-    SDL_free(&current_pos);
-    SDL_free(&last_pos);
-    SDL_free(&color);
 }
 
 Node::Node(TextureCache * cache, int x, int y, int w, int h, SDL_Color c, string filepath) {

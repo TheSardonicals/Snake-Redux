@@ -6,10 +6,10 @@ Snake::Snake(Clock * c, TextureCache* ca, int s, int x, int y, string d, SDL_Col
     clock = c;
     direction = d;
     cache = ca;
-    body_color = {  head_color.r,
-                    head_color.g, 
-                    head_color.b,
-                    head_color.a};
+    body_color = {head_color.r,
+                  head_color.g, 
+                  head_color.b,
+                  head_color.a};
     if (head_color.r > 100){body_color.r = body_color.r - 50;}
     if (head_color.g > 100){body_color.g = body_color.g - 50;}
     if (head_color.b > 100){body_color.b = body_color.b - 50;}
@@ -38,10 +38,16 @@ Snake::Snake(Clock * c, TextureCache* ca, int s, int x, int y, string d, SDL_Col
     
     head = body[0];
 
-    //this determines how many pixels the snake moves on an update period.
+    //this determines how many pixels the snake moves in an update period.
     move_px = size;
     if (movement_space)
         move_px = movement_space;
+}
+
+Snake::~Snake(){
+    for (auto part: body){
+        delete part;
+    }
 }
 
 void Snake::Process(bool wall, int bound_width, int bound_height) {
@@ -82,7 +88,7 @@ void Snake::Move() {
 
 void Snake::Grow(int amount) {
     for (int i = 0; i < amount; i++)
-        body.push_back(new Node(cache, body.back()->last_pos.x, body.back()->last_pos.y,
+        body.emplace_back(new Node(cache, body.back()->last_pos.x, body.back()->last_pos.y,
                                 size, size, body_color));
     limit++;
 }

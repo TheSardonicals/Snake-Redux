@@ -1,3 +1,4 @@
+#pragma once
 #include "node.h"
 #include "clock.h"
 
@@ -26,6 +27,7 @@ class Snake{
 
         //public functions
         Snake(Clock * c, TextureCache* ca, int s, int x, int y, string d, SDL_Color head_color, int movement_space = NULL);
+        ~Snake();
         void Process(bool wall, int bound_width, int bound_height);
         void Grow(int amount = 1);
         void Render();
